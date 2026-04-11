@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
+# hyperparameters
 block_size = 64
 batch_size = 32
 n_embd = 64
@@ -11,6 +12,7 @@ dropout = 0.2
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
+# loading dataset
 with open('shakespeare.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
@@ -93,6 +95,8 @@ class Block(nn.Module):
         x = x + self.ffwd(self.ln2(x))
         return x
 
+
+# gpt(bigram model)
 class GPT(nn.Module):
     def __init__(self):
         super().__init__()
@@ -170,6 +174,8 @@ def generate(model, idx, max_new_tokens):
         idx = torch.cat((idx, next_idx), dim=1)
     return idx
 
+
+# text generation
 context = torch.zeros((1,1), dtype=torch.long, device=device)
 output = decode(generate(model, context, 2000)[0].tolist())
 
