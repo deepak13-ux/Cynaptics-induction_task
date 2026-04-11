@@ -4,13 +4,11 @@
 
 This project implements a small GPT-2 style Transformer model trained on the Tiny Shakespeare dataset. The model learns character-level language modeling and can generate Shakespeare-like text.
 
----
+
 
 ## Setup
 
-### 1. Install Dependencies
 
----
 
 ## Dataset
 
@@ -22,7 +20,7 @@ python gpt2.py
 
 This downloads `shakespeare.txt` into your working directory.
 
----
+
 
 ## Training (Pretraining Script)
 
@@ -39,7 +37,7 @@ What happens:
 * Training runs for 5000 steps
 * Training and validation loss are printed every 500 steps
 
----
+
 
 ## Text Generation / Autocomplete
 
@@ -57,11 +55,10 @@ You can modify generation length here:
 generate(model, context, max_new_tokens=2000)
 ```
 
----
 
 ## Sample Generated Text
 
-Example output from the model:
+Example output from the model(from output.txt):
 
 ```
 MENENIIO:
@@ -81,7 +78,6 @@ The town you you dother poour lafter oftnery, they, if the peaterue
 Thant his as fane your begett what thy lateree heart' chirder him.
 ```
 
----
 
 ## Model Architecture
 
@@ -101,7 +97,7 @@ This is a **decoder-only Transformer (GPT-style)** with:
 * Residual connections + LayerNorm
 * Final linear layer for next-token prediction
 
----
+
 
 ## Training Details
 
@@ -111,7 +107,6 @@ This is a **decoder-only Transformer (GPT-style)** with:
 * Gradient Clipping: 1.0
 * Loss: Cross-Entropy
 
----
 
 ## Possible Improvements
 
@@ -121,7 +116,7 @@ This is a **decoder-only Transformer (GPT-style)** with:
 * Switch to subword tokenization (BPE)
 * Add checkpoint saving/loading
 
----
+
 
 ## File Structure
 
