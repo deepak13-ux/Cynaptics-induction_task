@@ -1,3 +1,33 @@
+# GPT 2
+# dowloading dataset
+"""
+This script downloads the Tiny Shakespeare dataset from URL
+and saves it locally as a text file named "shakespeare.txt".
+"""
+import requests
+import os
+
+url = "https://raw.githubusercontent.com/karpathy/char-rnn/refs/heads/master/data/tinyshakespeare/input.txt"
+DATA_PATH = "shakespeare.txt"
+def download_dataset()->None:
+    if os.path.exists(DATA_PATH):
+        print("File already exits. No changes made.")
+        return
+
+    text_file = requests.get(url).text
+    with open(DATA_PATH,"w") as f:
+        f.write(text_file)
+
+
+def load_dataset(print_text = False)->str:
+    with open(DATA_PATH, "r") as f:
+        txt = f.read()
+
+    return txt
+
+if __name__ == "__main__":
+    download_dataset()
+    load_dataset(print_text=True)
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
