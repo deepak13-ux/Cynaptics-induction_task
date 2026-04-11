@@ -57,6 +57,7 @@ def decode(l): return ''.join([itos[i] for i in l])
 
 data = torch.tensor(encode(text), dtype=torch.long)
 
+# Train and test splits
 n = int(0.9*len(data))
 train_data = data[:n]
 val_data = data[n:]
@@ -126,7 +127,7 @@ class Block(nn.Module):
         return x
 
 
-# gpt(bigram model)
+# gpt(simple bigram model)
 class GPT(nn.Module):
     def __init__(self):
         super().__init__()
@@ -163,6 +164,7 @@ class GPT(nn.Module):
 
         return logits, loss
 
+# create a PyTorch optimizer
 model = GPT().to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
 
